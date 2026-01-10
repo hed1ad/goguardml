@@ -1,0 +1,36 @@
+# Binaries
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+goanomaly
+
+# Test
+*.test
+coverage.out
+coverage.html
+
+# Dependencies
+vendor/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+*.gob
+*.model
+scores.json
+testdata/*.pcap
+
+# Build
+dist/
