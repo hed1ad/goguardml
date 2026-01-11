@@ -38,9 +38,9 @@ type Writer interface {
 
 // Result represents an anomaly detection result.
 type Result struct {
-	Timestamp int64              `json:"timestamp"`
-	Score     float64            `json:"score"`
-	IsAnomaly bool               `json:"is_anomaly"`
-	Features  []float64          `json:"features,omitempty"`
-	Metadata  map[string]any     `json:"metadata,omitempty"`
+	Timestamp int64          `json:"timestamp"`
+	Score     float64        `json:"score"`
+	IsAnomaly bool           `json:"is_anomaly"`
+	Features  []float64      `json:"features,omitempty"`
+	Metadata  map[string]any `json:"metadata,omitempty"`
 }

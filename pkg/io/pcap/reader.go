@@ -119,7 +119,8 @@ func NewFeatureExtractor() *FeatureExtractor {
 
 // Extract converts a packet to a feature vector.
 // Features: [packet_size, inter_arrival_time, protocol, src_port, dst_port,
-//            tcp_flags, ip_ttl, payload_size]
+//
+//	tcp_flags, ip_ttl, payload_size]
 func (e *FeatureExtractor) Extract(packet gopacket.Packet) []float64 {
 	features := make([]float64, 8)
 
@@ -183,7 +184,7 @@ func (e *FeatureExtractor) FeatureNames() []string {
 func encodeTCPFlags(tcp *layers.TCP) float64 {
 	var flags float64
 	if tcp.SYN {
-		flags += 1
+		flags++
 	}
 	if tcp.ACK {
 		flags += 2
