@@ -5,30 +5,31 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/hed1ad/goguardml/pkg/detectors"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+
+	"github.com/hed1ad/goguardml/pkg/detectors"
 )
 
 func TestNewIsolationForest(t *testing.T) {
 	tests := []struct {
-		name    string
-		opts    []Option
+		name       string
+		opts       []Option
 		wantNTrees int
 	}{
 		{
-			name:    "default configuration",
-			opts:    nil,
+			name:       "default configuration",
+			opts:       nil,
 			wantNTrees: 100,
 		},
 		{
-			name:    "custom trees",
-			opts:    []Option{WithTrees(50)},
+			name:       "custom trees",
+			opts:       []Option{WithTrees(50)},
 			wantNTrees: 50,
 		},
 		{
-			name:    "multiple options",
-			opts:    []Option{WithTrees(200), WithContamination(0.05), WithSeed(123)},
+			name:       "multiple options",
+			opts:       []Option{WithTrees(200), WithContamination(0.05), WithSeed(123)},
 			wantNTrees: 200,
 		},
 	}
@@ -164,7 +165,7 @@ func TestPredictStream(t *testing.T) {
 	}()
 
 	// Receive results
-	var results []detectors.Score
+	results := make([]detectors.Score, 0, len(testSamples))
 	for score := range output {
 		results = append(results, score)
 	}
